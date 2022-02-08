@@ -15,6 +15,8 @@ const OTHERS_PER_LENGTH = new Map()
 
 function getRandomWordWithLength(length, type, response) {
     let collection = obtainCollection(type)
+    console.log('collection obtained is ' + collection)
+    console.log('it has keys ' + collection.keys())
     if (!collection.has(length))
         response.status(400).send('[HTTP 400] Have no word of type ' + type + ' with length ' + length)
 
