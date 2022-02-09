@@ -22,17 +22,21 @@ npm run start
 ```
 
 3. Use on of the endpoints available
-   1. [/noun/random/:length](http://localhost:3000/noun/random/:length)
-   2. [/noun/check/:word](http://localhost:3000/noun/check/:word)
-   3. [/verb/random/:length](http://localhost:3000/verb/random/:length)
-   4. [/verb/check/:word](http://localhost:3000/verb/check/:word)
-   5. [/adjective/random/:length](http://localhost:3000/adjective/random/:length)
-   6. [/adjective/check/:word](http://localhost:3000/adjective/check/:word)
-   7. [/other/random/:length](http://localhost:3000/other/random/:length)
-   8. [/other/check/:word](http://localhost:3000/other/check/:word)
+   1. [/word/random/:length](http://localhost:3000/word/random/:length)
+      1. gets word with no category selected - randomly from all the categories with words of specified length
+   2. [/word/check/:word](http://localhost:3000/word/check/:word)
+      1. checks if word exists in any of category doctionaries
+   3. [/noun/random/:length](http://localhost:3000/noun/random/:length)
+   4. [/noun/check/:word](http://localhost:3000/noun/check/:word)
+   5. [/verb/random/:length](http://localhost:3000/verb/random/:length)
+   6. [/verb/check/:word](http://localhost:3000/verb/check/:word)
+   7. [/adjective/random/:length](http://localhost:3000/adjective/random/:length)
+   8. [/adjective/check/:word](http://localhost:3000/adjective/check/:word)
+   9. [/other/random/:length](http://localhost:3000/other/random/:length)
+   10. [/other/check/:word](http://localhost:3000/other/check/:word)
 
 where **:length** is the length of word to get (from 3 to 30+ - longest Polish adjective is 33 letters long)
-<br/> and **:word** is a word to valide against the dictionary
+<br/> and **:word** is a word to validate against the dictionary
 
 Example GET /noun/random/5 response:
 ```
