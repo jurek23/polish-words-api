@@ -103,11 +103,14 @@ app.get('/other/check/:word', function (req, res) {
 
 function init() {
     const allWordsFileNames = getAllFiles.getAllFilesSync(`resources/`).toArray()
-    console.log('all file names? ' + allWordsFileNames.join('\n'))
+    console.log('example word file name? ' + allWordsFileNames[0])
     allWordsFileNames.forEach(fn => {
         let type = fn.substring(fn.indexOf('\\') + 1, fn.lastIndexOf('\\'))
         let letters = fn.substring(fn.lastIndexOf('\\') + 1, fn.indexOf('-'))
         let fileContent = fs.readFileSync(fn)
+        console.log('type: ' + type)
+        console.log('letters: ' + letters)
+        console.log('filecontent?: ' + fileContent.toString().substring(0, 6))
         switch(type) {
             case 'others' : {
                 OTHERS_PER_LENGTH.set(letters, fileContent.toString().split('\n'))
