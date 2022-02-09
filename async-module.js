@@ -18,7 +18,7 @@ module.exports = async (howLong) => {
 
 function getLineReader(howLong) {
     return readline.createInterface({
-        input: fs.createReadStream('resources/' + howLong + '-letters-nouns.txt')
+        input: fs.createReadStream('resources/' + howLong + '-letters-type-nouns-list.txt')
     })
 }
 

@@ -15,8 +15,6 @@ const OTHERS_PER_LENGTH = new Map()
 
 function getRandomWordWithLength(length, type, response) {
     let collection = obtainCollection(type)
-    console.log('collection obtained is ' + collection)
-    console.log('it has keys ' + collection.keys())
     if (!collection.has(length))
         response.status(400).send('[HTTP 400] Have no word of type ' + type + ' with length ' + length)
 
@@ -103,14 +101,11 @@ app.get('/other/check/:word', function (req, res) {
 
 function init() {
     const allWordsFileNames = getAllFiles.getAllFilesSync(`resources/`).toArray()
-    console.log('example word file name? ' + allWordsFileNames[0])
     allWordsFileNames.forEach(fn => {
-        let type = fn.substring(fn.indexOf('\\') + 1, fn.lastIndexOf('\\'))
-        let letters = fn.substring(fn.lastIndexOf('\\') + 1, fn.indexOf('-'))
+        //locally \ in path, on heroku / in path...
+        let type = fn.substring(fn.indexOf('type-') + 5, fn.lastIndexOf('-list'))
+        let letters = fn.substring(fn.lastIndexOf('-list') + 6, fn.indexOf('-letters'))
         let fileContent = fs.readFileSync(fn)
-        console.log('type: ' + type)
-        console.log('letters: ' + letters)
-        console.log('filecontent?: ' + fileContent.toString().substring(0, 6))
         switch(type) {
             case 'others' : {
                 OTHERS_PER_LENGTH.set(letters, fileContent.toString().split('\n'))
