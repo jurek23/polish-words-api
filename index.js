@@ -118,6 +118,7 @@ function init() {
             }
             case 'nouns' : {
                 NOUNS_PER_LENGTH.set(letters, fileContent.toString().split('\n'))
+                console.log('5-letters nouns loaded ' + NOUNS_PER_LENGTH.get('5'))
                 break
             }
             case 'verbs' : {
