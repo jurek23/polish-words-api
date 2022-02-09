@@ -103,6 +103,7 @@ app.get('/other/check/:word', function (req, res) {
 
 function init() {
     const allWordsFileNames = getAllFiles.getAllFilesSync(`resources/`).toArray()
+    console.log('all file names? ' + allWordsFileNames.join('\n'))
     allWordsFileNames.forEach(fn => {
         let type = fn.substring(fn.indexOf('\\') + 1, fn.lastIndexOf('\\'))
         let letters = fn.substring(fn.lastIndexOf('\\') + 1, fn.indexOf('-'))
@@ -118,7 +119,6 @@ function init() {
             }
             case 'nouns' : {
                 NOUNS_PER_LENGTH.set(letters, fileContent.toString().split('\n'))
-                console.log('5-letters nouns loaded ' + NOUNS_PER_LENGTH.get('5'))
                 break
             }
             case 'verbs' : {
